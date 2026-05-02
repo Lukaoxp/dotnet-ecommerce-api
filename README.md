@@ -74,6 +74,10 @@ Dependencies point inward — Domain has zero external dependencies. Infrastruct
 
 **Security**
 - JWT authentication built from scratch — token generation, validation, claims, roles
+- Refresh tokens with short-lived access tokens (15 min) and long-lived refresh tokens (7 days)
+- Refresh token rotation with reuse detection — compromised token invalidates the entire session family
+- Refresh token stored in `HttpOnly; Secure; SameSite=Strict` cookie — inaccessible to JavaScript
+- Logout revokes the refresh token family in PostgreSQL and adds the access token JTI to a Redis blocklist (TTL = remaining token lifetime)
 - CORS policy per environment
 - Rate limiting (built-in .NET 10 middleware)
 - Idempotency keys on order and payment endpoints
