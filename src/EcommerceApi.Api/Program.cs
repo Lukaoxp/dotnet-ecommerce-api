@@ -1,18 +1,18 @@
+using EcommerceApi.Application.Extensions;
+using EcommerceApi.Infrastructure.Extensions;
 using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddApplication()
+                .AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers();
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Development", policy =>
-    policy
-        .AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader());
+    policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
 
 var app = builder.Build();
@@ -22,7 +22,6 @@ app.Use(async (context, next) =>
 {
     var path = context.Request.Path;
     Console.WriteLine($"[REQUEST] {context.Request.Method} {path}");
-
     await next(context);
     Console.WriteLine($"[RESPONSE] Status: {context.Response.StatusCode}");
 });
@@ -33,11 +32,8 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 
 app.UseHttpsRedirection();
-
 app.UseCors("Development");
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

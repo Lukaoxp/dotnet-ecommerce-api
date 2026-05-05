@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EcommerceApi.Application\EcommerceApi.Application.csproj" />
+    <ProjectReference Include="..\EcommerceApi.Infrastructure\EcommerceApi.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
