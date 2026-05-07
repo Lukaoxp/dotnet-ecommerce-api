@@ -11,4 +11,9 @@
     <ProjectReference Include="..\EcommerceApi.Infrastructure\EcommerceApi.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+    <PackageReference Include="Serilog.Formatting.Compact" Version="3.0.0" />
+  </ItemGroup>
+
 </Project>
