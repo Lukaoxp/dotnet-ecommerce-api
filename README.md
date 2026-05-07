@@ -2,6 +2,7 @@
 
 > Production-grade multi-tenant e-commerce REST API built with ASP.NET Core .NET 10 and Clean Architecture.
 
+[![Project Status](https://img.shields.io/badge/Status-WIP-yellow)](https://github.com/lukaoxp/dotnet-ecommerce-api)
 ![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-4169E1?logo=postgresql&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-OSS-DC382D?logo=redis&logoColor=white)
