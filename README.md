@@ -53,7 +53,7 @@ Dependencies point inward — Domain has zero external dependencies. Infrastruct
 | Documentation    | Scalar (OpenAPI)                              |
 | Validation       | FluentValidation                              |
 | Mapping          | Mapster + manual domain mapping               |
-| Testing          | xUnit · Testcontainers · FluentAssertions     |
+| Testing          | xUnit · Testcontainers · NSubstitute          |
 | Containerization | Docker · Docker Compose · nginx               |
 | CI/CD            | GitHub Actions                                |
 
