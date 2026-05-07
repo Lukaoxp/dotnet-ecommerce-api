@@ -41,20 +41,20 @@ Dependencies point inward — Domain has zero external dependencies. Infrastruct
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Runtime | ASP.NET Core .NET 10 |
-| Database | PostgreSQL 18 + Entity Framework Core |
-| Cache | Redis OSS |
-| Resilience | Polly (circuit breaker + retry) |
-| Logging | Serilog (structured, JSON output) |
-| Observability | OpenTelemetry · Prometheus · Grafana · Sentry |
-| Documentation | Scalar (OpenAPI) |
-| Validation | FluentValidation |
-| Mapping | Mapster + manual domain mapping |
-| Testing | xUnit · Testcontainers · FluentAssertions |
-| Containerization | Docker · Docker Compose · nginx |
-| CI/CD | GitHub Actions |
+| Layer            | Technology                                    |
+| ---------------- | --------------------------------------------- |
+| Runtime          | ASP.NET Core .NET 10                          |
+| Database         | PostgreSQL 18 + Entity Framework Core         |
+| Cache            | Redis OSS                                     |
+| Resilience       | Polly (circuit breaker + retry)               |
+| Logging          | Serilog (structured, JSON output)             |
+| Observability    | OpenTelemetry · Prometheus · Grafana · Sentry |
+| Documentation    | Scalar (OpenAPI)                              |
+| Validation       | FluentValidation                              |
+| Mapping          | Mapster + manual domain mapping               |
+| Testing          | xUnit · Testcontainers · NSubstitute          |
+| Containerization | Docker · Docker Compose · nginx               |
+| CI/CD            | GitHub Actions                                |
 
 ---
 
@@ -200,11 +200,11 @@ Integration tests spin up isolated PostgreSQL and Redis containers via Testconta
 
 ## Observability
 
-| Tool | URL | Purpose |
-|---|---|---|
-| Scalar | `http://localhost:5000/scalar` | API documentation |
-| Grafana | `http://localhost:3000` | Metrics dashboards |
-| Prometheus | `http://localhost:9090` | Metrics scraping |
+| Tool          | URL                             | Purpose              |
+| ------------- | ------------------------------- | -------------------- |
+| Scalar        | `http://localhost:5000/scalar`  | API documentation    |
+| Grafana       | `http://localhost:3000`         | Metrics dashboards   |
+| Prometheus    | `http://localhost:9090`         | Metrics scraping     |
 | Health checks | `http://localhost:5000/healthz` | Liveness + readiness |
 
 ---
