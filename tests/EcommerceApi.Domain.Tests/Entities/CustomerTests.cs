@@ -7,7 +7,7 @@ namespace EcommerceApi.Domain.Tests.Entities;
 
 public class CustomerTests
 {
-    private static readonly Guid TenantId = Guid.NewGuid();
+    private static readonly TenantId TenantId = TenantId.From(Guid.NewGuid());
 
     [Fact]
     public void Create_WithValidData_SetsActiveStatus()

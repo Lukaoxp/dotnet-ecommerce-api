@@ -1,3 +1,4 @@
+using EcommerceApi.Api.Middleware;
 using EcommerceApi.Application.Extensions;
 using EcommerceApi.Infrastructure.Extensions;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -77,6 +78,7 @@ try
     });
 
     app.UseHttpsRedirection();
+    app.UseMiddleware<TenantResolutionMiddleware>();
     app.UseCors("Development");
     app.UseAuthorization();
     app.MapControllers();

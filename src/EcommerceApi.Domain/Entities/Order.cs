@@ -8,7 +8,6 @@ namespace EcommerceApi.Domain.Entities;
 public sealed class Order : AggregateRoot
 {
     public Guid CustomerId { get; private set; }
-    public Guid TenantId { get; private set; }
     private readonly List<OrderItem> _orderItems = [];
     public IReadOnlyList<OrderItem> OrderItems => _orderItems;
     public OrderStatus OrderStatus { get; private set; }
@@ -17,7 +16,7 @@ public sealed class Order : AggregateRoot
         : _orderItems.Select(i => i.UnitPrice.Multiply(i.Quantity))
                         .Aggregate((acc, next) => acc.Add(next));
     private Order() { }
-    public static Order Create(Guid customerId, Guid tenantId)
+    public static Order Create(Guid customerId, TenantId tenantId)
     {
         return new Order()
         {
@@ -45,7 +44,7 @@ public sealed class Order : AggregateRoot
             throw new DomainException("Order cannot be placed without items");
         OrderStatus = OrderStatus.Placed;
         Update();
-        Raise(new OrderPlacedEvent(Id, TenantId));
+        Raise(new OrderPlacedEvent(Id, TenantId.Value));
         return this;
     }
 

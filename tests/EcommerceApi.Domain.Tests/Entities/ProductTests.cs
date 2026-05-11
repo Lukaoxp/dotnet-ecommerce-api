@@ -8,7 +8,7 @@ namespace EcommerceApi.Domain.Tests.Entities;
 
 public class ProductTests
 {
-    private static readonly Guid TenantId = Guid.NewGuid();
+    private static readonly TenantId TenantId = TenantId.From(Guid.NewGuid());
 
     [Fact]
     public void Create_WithValidData_RaisesProductCreatedEvent()
