@@ -7,7 +7,6 @@ namespace EcommerceApi.Domain.Entities;
 
 public sealed class Customer : AggregateRoot, IAnonymizable
 {
-    public Guid TenantId { get; private set; }
     public string FullName { get; private set; } = string.Empty;
     public Email Email { get; private set; } = null!;
     public string Cpf { get; private set; } = string.Empty;
@@ -23,7 +22,7 @@ public sealed class Customer : AggregateRoot, IAnonymizable
 
     private Customer() { }
 
-    public static Customer Create(Guid tenantId, string fullName, Email email, string cpf, string phone)
+    public static Customer Create(TenantId tenantId, string fullName, Email email, string cpf, string phone)
     {
         if (string.IsNullOrWhiteSpace(fullName))
             throw new DomainException("Customer name cannot be empty");
@@ -41,7 +40,7 @@ public sealed class Customer : AggregateRoot, IAnonymizable
             DeletionStatus = DeletionStatus.Active
         };
 
-        customer.Raise(new CustomerRegisteredEvent(customer.Id, tenantId));
+        customer.Raise(new CustomerRegisteredEvent(customer.Id, tenantId.Value));
         return customer;
     }
 
@@ -85,6 +84,6 @@ public sealed class Customer : AggregateRoot, IAnonymizable
         DeletedAt = DateTime.UtcNow;
         Update();
 
-        Raise(new CustomerAnonymizedEvent(Id, TenantId));
+        Raise(new CustomerAnonymizedEvent(Id, TenantId.Value));
     }
 }

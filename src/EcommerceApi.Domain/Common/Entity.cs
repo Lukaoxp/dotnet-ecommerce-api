@@ -1,8 +1,11 @@
-﻿namespace EcommerceApi.Domain.Common;
+﻿using EcommerceApi.Domain.ValueObjects;
+
+namespace EcommerceApi.Domain.Common;
 
 public abstract class Entity
 {
     public Guid Id { get; private set; }
+    public TenantId TenantId { get; protected set; } = null!;
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
 

@@ -7,7 +7,6 @@ namespace EcommerceApi.Domain.Entities;
 
 public sealed class Product : AggregateRoot, ISoftDeletable
 {
-    public Guid TenantId { get; private set; }
     public string Name { get; private set; } = string.Empty;
     public string Sku { get; private set; } = string.Empty;
     public Money Price { get; private set; } = null!;
@@ -19,7 +18,7 @@ public sealed class Product : AggregateRoot, ISoftDeletable
 
     private Product() { }
 
-    public static Product Create(Guid tenantId, string name, string sku, Money price, int stock)
+    public static Product Create(TenantId tenantId, string name, string sku, Money price, int stock)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new DomainException("Product name cannot be empty");
@@ -38,7 +37,7 @@ public sealed class Product : AggregateRoot, ISoftDeletable
             DeletionStatus = DeletionStatus.Active
         };
 
-        product.Raise(new ProductCreatedEvent(product.Id, tenantId, name, sku));
+        product.Raise(new ProductCreatedEvent(product.Id, tenantId.Value, name, sku));
         return product;
     }
 

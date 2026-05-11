@@ -7,7 +7,7 @@ namespace EcommerceApi.Domain.Tests.Entities;
 
 public class OrderTests
 {
-    private static readonly Guid TenantId = Guid.NewGuid();
+    private static readonly TenantId TenantId = TenantId.From(Guid.NewGuid());
     private static readonly Guid CustomerId = Guid.NewGuid();
     private static readonly Guid ProductId = Guid.NewGuid();
 
