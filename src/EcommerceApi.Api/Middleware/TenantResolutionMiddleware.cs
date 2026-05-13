@@ -21,7 +21,7 @@ public sealed class TenantResolutionMiddleware
             return;
         }
 
-        if (Guid.TryParse(header, out _))
+        if (!Guid.TryParse(header, out _))
         {
             context.Response.StatusCode = StatusCodes.Status400BadRequest;
             await context.Response.WriteAsJsonAsync(new
