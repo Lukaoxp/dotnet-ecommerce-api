@@ -11,7 +11,7 @@ public abstract class Entity
 
     protected Entity()
     {
-        Id = Guid.NewGuid();
+        Id = Guid.CreateVersion7();
         CreatedAt = DateTime.UtcNow;
     }
 
