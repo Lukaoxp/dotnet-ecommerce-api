@@ -1,4 +1,4 @@
-# EcommerceApi
+# EcommerceApi 
 
 > Production-grade multi-tenant e-commerce REST API built with ASP.NET Core .NET 10 and Clean Architecture.
 
@@ -7,7 +7,7 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-4169E1?logo=postgresql&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-OSS-DC382D?logo=redis&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
+[![CI](https://github.com/lukaoxp/dotnet-ecommerce-api/actions/workflows/ci.yml/badge.svg)](https://github.com/lukaoxp/dotnet-ecommerce-api/actions/workflows/ci.yml)
 
 ---
 
