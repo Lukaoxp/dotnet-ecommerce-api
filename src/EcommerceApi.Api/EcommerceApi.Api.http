@@ -1,3 +1,3 @@
-@EcommerceApi_HostAddress = http://localhost:5279
+@EcommerceApi.Api_HostAddress = http://localhost:5279
 
 ###
