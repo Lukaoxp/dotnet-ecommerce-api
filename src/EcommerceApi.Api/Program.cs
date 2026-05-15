@@ -18,6 +18,11 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    builder.WebHost.ConfigureKestrel(options =>
+    {
+        options.Limits.MaxRequestBodySize = 10 * 1024 * 1024; // 10 MB
+    });
+
     // Replaces ASP.NET Core's default logger with Serilog
     builder.Services.AddSerilog((services, lc) =>
     {
@@ -37,7 +42,9 @@ try
     builder.Services.AddApplication();
     builder.Services.AddInfrastructure(builder.Configuration);
 
-    builder.Services.AddControllers();
+    builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+        options.JsonSerializerOptions.MaxDepth = 32);
     builder.Services.AddCors(options =>
     {
         options.AddPolicy("Development", policy =>
@@ -75,6 +82,14 @@ try
     app.UseForwardedHeaders(new ForwardedHeadersOptions
     {
         ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+    });
+
+    app.Use(async (context, next) =>
+    {
+        context.Response.Headers.XContentTypeOptions = "nosniff";
+        context.Response.Headers.XFrameOptions = "DENY";
+        context.Response.Headers.XXSSProtection = "0";
+        await next(context);
     });
 
     app.UseHttpsRedirection();
