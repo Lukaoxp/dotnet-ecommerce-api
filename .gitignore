@@ -6,9 +6,11 @@
 # dotenv files
 .env
 
-# Secrets & local configs
+# Secrets e configurações locais — nunca commitar
+appsettings.Development.json
 appsettings.*.json
 !appsettings.json
+!appsettings.Production.json
 
 # User-specific files
 *.rsuser
